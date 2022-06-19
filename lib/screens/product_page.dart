@@ -1,3 +1,4 @@
+import 'package:electros/constants.dart';
 import 'package:flutter/material.dart';
 
 import '../models/Product.dart';
@@ -6,7 +7,7 @@ import '../widgets/rating_box.dart';
 class ProductPage extends StatelessWidget {
   final Product item;
   const ProductPage({Key? key, required this.item}) : super(key: key);
-
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,7 +21,7 @@ class ProductPage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
-                Image.asset("assets/images/${item.image}"),
+                Image.network("$baseUrl/${item.image}"),
                 Expanded(
                     child: Container(
                         padding: const EdgeInsets.all(5),
@@ -39,5 +40,6 @@ class ProductPage extends StatelessWidget {
         ),
       ),
     );
+
   }
 }

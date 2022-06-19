@@ -1,3 +1,4 @@
+import 'package:electros/constants.dart';
 import 'package:electros/widgets/rating_box.dart';
 import 'package:flutter/material.dart';
 
@@ -16,7 +17,7 @@ class ProductBox extends StatelessWidget {
           child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
-                Image.asset("assets/images/${item.image}"),
+                Image.network("$baseUrl/${item.image}"),
                 Expanded(
                     child: Container(
                         padding: const EdgeInsets.all(5),
@@ -28,7 +29,7 @@ class ProductBox extends StatelessWidget {
                                     fontWeight: FontWeight.bold)),
                             Text(item.description),
                             Text("Price: ${item.price}"),
-                            RatingBox(),
+                            const RatingBox(),
                           ],
                         )))
               ]),

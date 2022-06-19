@@ -1,6 +1,9 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 class RatingBox extends StatefulWidget {
+  const RatingBox({Key? key}) : super(key: key);
+
   @override
   _RatingBoxState createState() =>_RatingBoxState();
 }
@@ -21,9 +24,13 @@ class _RatingBoxState extends State<RatingBox> {
       _rating = 3;
     });
   }
+  
+  @override
   Widget build(BuildContext context) {
-    double _size = 20;
-    print(_rating);
+    double size = 20;
+    if (kDebugMode) {
+      print(_rating);
+    }
     return Row(
       mainAxisAlignment: MainAxisAlignment.end,
       crossAxisAlignment: CrossAxisAlignment.end,
@@ -31,40 +38,40 @@ class _RatingBoxState extends State<RatingBox> {
 
       children: <Widget>[
         Container(
-          padding: EdgeInsets.all(0),
+          padding: const EdgeInsets.all(0),
           child: IconButton(
             icon: (
                 _rating >= 1
-                    ? Icon(Icons.star, size: _size,)
-                    : Icon(Icons.star_border, size: _size,)
+                    ? Icon(Icons.star, size: size,)
+                    : Icon(Icons.star_border, size: size,)
             ),
-            color: Colors.red[500], onPressed: _setRatingAsOne, iconSize: _size,
+            color: Colors.red[500], onPressed: _setRatingAsOne, iconSize: size,
           ),
         ),
         Container(
-          padding: EdgeInsets.all(0),
+          padding: const EdgeInsets.all(0),
           child: IconButton(
             icon: (
                 _rating >= 2
-                    ? Icon(Icons.star, size: _size,)
-                    : Icon(Icons.star_border, size: _size, )
+                    ? Icon(Icons.star, size: size,)
+                    : Icon(Icons.star_border, size: size, )
             ),
             color: Colors.red[500],
             onPressed: _setRatingAsTwo,
-            iconSize: _size,
+            iconSize: size,
           ),
         ),
         Container(
-          padding: EdgeInsets.all(0),
+          padding: const EdgeInsets.all(0),
           child: IconButton(
             icon: (
                 _rating >= 3 ?
-                Icon(Icons.star, size: _size,)
-                    : Icon(Icons.star_border, size: _size,)
+                Icon(Icons.star, size: size,)
+                    : Icon(Icons.star_border, size: size,)
             ),
             color: Colors.red[500],
             onPressed: _setRatingAsThree,
-            iconSize: _size,
+            iconSize: size,
           ),
         ),
       ],
