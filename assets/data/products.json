@@ -1,0 +1,38 @@
+[
+  {
+    "name": "iPhone",
+    "description": "iPhone is the stylist phone ever",
+    "price": 1000,
+    "image": "iphone.png"
+  },
+  {
+    "name": "Pixel",
+    "description": "Pixel is the most feature phone ever",
+    "price": 800,
+    "image": "pixel.png"
+  },
+  {
+    "name": "Laptop",
+    "description": "Laptop is most productive development tool",
+    "price": 2000,
+    "image": "laptop.png"
+  },
+  {
+    "name": "Tablet",
+    "description": "Tablet is the most useful device ever for meeting",
+    "price": 1500,
+    "image": "tablet.png"
+  },
+  {
+    "name": "Pendrive",
+    "description": "Pendrive is useful storage medium",
+    "price": 100,
+    "image": "pendrive.png"
+  },
+  {
+    "name": "Floppy Drive",
+    "description": "Floppy drive is useful rescue storage medium",
+    "price": 20,
+    "image": "floppy.png"
+  }
+]
