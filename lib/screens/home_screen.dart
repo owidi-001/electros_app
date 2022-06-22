@@ -1,9 +1,11 @@
 import 'package:electros/models/product.model.dart';
-import 'package:electros/services/product.service.dart';
+import 'package:electros/services/http.service.dart';
 import 'package:electros/utils/app_theme.dart';
 import 'package:electros/widgets/items_section.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+
+import '../widgets/categories_list.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key, required this.title}) : super(key: key);
@@ -65,83 +67,101 @@ class _HomePageState extends State<HomePage> {
                     )
                   ],
                 ),
-                const Padding(padding: EdgeInsets.all(10)),
+                const Padding(padding: EdgeInsets.all(5)),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: const <Widget>[
-                    Text(
+                  children: <Widget>[
+                    const Text(
                       "Promotion",
                       style: TextStyle(
                           color: ColorPalette.darkColor,
                           fontWeight: FontWeight.normal),
                     ),
-                    Text(
-                      "more",
-                      style: TextStyle(
-                          color: ColorPalette.primaryColor,
-                          fontWeight: FontWeight.normal),
-                    )
+                    TextButton(
+                        onPressed: () => {},
+                        child: const Text(
+                          "more",
+                          style: TextStyle(
+                              color: ColorPalette.primaryColor,
+                              fontWeight: FontWeight.normal),
+                        ))
                   ],
                 ),
-                const Padding(padding: EdgeInsets.all(10)),
+                
                 // hero
                 Card(
                     elevation: 0,
-                    shape: RoundedRectangleBorder(
-                      side: BorderSide(
-                        color: Theme.of(context).colorScheme.outline,
-                      ),
-                      borderRadius: const BorderRadius.all(Radius.circular(12)),
+                    color: ColorPalette.primaryColor,
+                    shape: const RoundedRectangleBorder(
+                      side: BorderSide(color: ColorPalette.greyColor),
+                      borderRadius: BorderRadius.all(Radius.circular(12)),
                     ),
-                    child: Row(
-                      children: [
-                        Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            const Text(
-                              "Get Free",
-                              style: TextStyle(
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.w400,
-                                  color: Colors.blueGrey),
-                            ),
-                            const Text(
-                              "Shipping",
-                              style: TextStyle(
-                                  fontSize: 36,
-                                  fontWeight: FontWeight.w600,
-                                  color: Colors.black12),
-                            ),
-                            const Text(
-                              "First Purchase",
-                              style: TextStyle(
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.w400,
-                                  color: Colors.blueGrey),
-                            ),
-                            ElevatedButton(
-                                onPressed: () => {},
-                                child: const Text(
-                                  "Shop Now",
-                                  style: TextStyle(
-                                      fontSize: 12,
-                                      fontWeight: FontWeight.w400,
-                                      color: Colors.white),
-                                ))
-                          ],
-                        ),
-                        Expanded(
-                          child: Image.asset(
-                            "assets/images/pixel.png",
-                            // height: 300,
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              const Text(
+                                "Google Pixels",
+                                style: TextStyle(
+                                    fontSize: 12,
+                                    fontWeight: FontWeight.w400,
+                                    color: ColorPalette.lightColor),
+                              ),
+                              const Text(
+                                "48 MP",
+                                style: TextStyle(
+                                    fontSize: 40,
+                                    fontWeight: FontWeight.w600,
+                                    color: ColorPalette.lightColor),
+                              ),
+                              const Text(
+                                "Camera",
+                                style: TextStyle(
+                                    fontSize: 28,
+                                    fontWeight: FontWeight.w600,
+                                    color: ColorPalette.lightColor),
+                              ),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: const <Widget>[
+                                  Text(
+                                    "\$600",
+                                    style: TextStyle(
+                                        fontSize: 18,
+                                        fontWeight: FontWeight.w400,
+                                        color: Colors.white),
+                                  ),
+                                  Padding(padding: EdgeInsets.all(5)),
+                                  Text(
+                                    "\$800",
+                                    style: TextStyle(
+                                        fontSize: 12,
+                                        fontWeight: FontWeight.w400,
+                                        color: ColorPalette.gradientColor,
+                                        decoration: TextDecoration.lineThrough),
+                                  )
+                                ],
+                              )
+                            ],
                           ),
-                        )
-                      ],
+                          Expanded(
+                            child: Image.asset(
+                              "assets/images/pixel.png",
+                              // height: 300,
+                            ),
+                          )
+                        ],
+                      ),
                     )),
 
-                // Item categorical list
-                ItemsSection(),
+                // Item categories list
+                CategorySection(),
               ],
             ),
           ),

@@ -1,22 +1,22 @@
-class Category {
+class ProductCategory {
   final String name;
+  final String logo;
 
-  Category(this.name);
+  ProductCategory(this.name, this.logo);
 
-  Map toJson()=>{
-    "name":name
-  };
+  Map toJson() => {"name": name, "logo": logo};
 
-factory Category.fromMap(Map<String, dynamic> json) {
-    return Category(
+  factory ProductCategory.fromMap(Map<String, dynamic> json) {
+    return ProductCategory(
       json['name'],
+      json['logo'],
     );
   }
 
-  factory Category.fromJson(Map<String, dynamic> data) {
-    return Category(
+  factory ProductCategory.fromJson(Map<String, dynamic> data) {
+    return ProductCategory(
       data['name'],
+      data['logo'],
     );
   }
-
 }

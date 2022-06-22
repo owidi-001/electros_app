@@ -6,7 +6,7 @@ class Product {
   final String description;
   final double price;
   final String image;
-  final Category category;
+  final ProductCategory category;
 
   Product(this.id,this.label, this.description, this.price, this.image, this.category);
 
@@ -31,7 +31,7 @@ class Product {
       json['description'] as String,
       json['price'] as double,
       json['image'] as String,
-      json['category'] as Category,
+      json['category'] as ProductCategory,
     );
   }
 
@@ -43,7 +43,7 @@ class Product {
       data['price'] as double,
       data['image'] as String,
       // data['category'] as Category
-      Category.fromJson(data['category'])
+      ProductCategory.fromJson(data['category'])
     );
   }
 }
