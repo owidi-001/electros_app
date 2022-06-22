@@ -1,0 +1,65 @@
+
+[
+
+    {
+        "id": 1,
+        "label": "iphone 6s",
+        "description": "The best selling iphone ever",
+        "price": 60.0,
+        "image": "/media/media/products/iphone.png",
+        "quantity": 20,
+        "category": {
+            "id": 1,
+            "name": "phones"
+        }
+    },
+    {
+        "id": 2,
+        "label": "macbook pro",
+        "description": "2022 macbook pro with m1",
+        "price": 2000.0,
+        "image": "/media/media/products/laptop.png",
+        "quantity": 10,
+        "category": {
+            "id": 2,
+            "name": "laptops"
+        }
+    },
+    {
+        "id": 3,
+        "label": "floppy disk",
+        "description": "Old school storage device",
+        "price": 100.0,
+        "image": "/media/media/products/floppy.png",
+        "quantity": 5,
+        "category": {
+            "id": 3,
+            "name": "storages"
+        }
+    },
+    {
+        "id": 4,
+        "label": "pendrive",
+        "description": "USB sticks",
+        "price": 50.0,
+        "image": "/media/media/products/pendrive.png",
+        "quantity": 20,
+        "category": {
+            "id": 3,
+            "name": "storages"
+        }
+    },
+    {
+        "id": 5,
+        "label": "pixel 6",
+        "description": "Best android phone",
+        "price": 600.0,
+        "image": "/media/media/products/pixel.png",
+        "quantity": 5,
+        "category": {
+            "id": 1,
+            "name": "phones"
+        }
+    }
+
+]
