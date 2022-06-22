@@ -1,9 +1,7 @@
-import 'dart:ffi';
-
 import 'package:electros/models/product.model.dart';
 import 'package:electros/services/product.service.dart';
+import 'package:electros/utils/app_theme.dart';
 import 'package:electros/widgets/items_section.dart';
-import 'package:electros/widgets/product_list.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
@@ -17,10 +15,6 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  final bool _pinned = true;
-  final bool _snap = false;
-  final bool _floating = false;
-
   late final Future<List<Product>> products = fetchProducts();
 
   @override
@@ -33,33 +27,125 @@ class _HomePageState extends State<HomePage> {
 
     return SafeArea(
       child: Scaffold(
-        body: Center(
+        backgroundColor: Colors.white,
+        body: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20),
             child: Column(
-          children: <Widget>[
-            // hero
-            SizedBox(
-              height: size.height * 0.4,
-              width: size.width,
-              child: Card(
-                elevation: 0,
-                shape: RoundedRectangleBorder(
-                  side: BorderSide(
-                    color: Theme.of(context).colorScheme.outline,
-                  ),
-                  borderRadius: const BorderRadius.all(Radius.circular(12)),
+              children: <Widget>[
+                const Padding(padding: EdgeInsets.all(10)),
+                // nav bar
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: const <Widget>[
+                        Text(
+                          "Good Morning",
+                          style: TextStyle(
+                              fontSize: 15,
+                              fontWeight: FontWeight.w400,
+                              color: ColorPalette.greyColor),
+                        ),
+                        Text(
+                          "John Doe",
+                          style: TextStyle(
+                              fontSize: 36,
+                              fontWeight: FontWeight.w600,
+                              color: ColorPalette.darkColor),
+                        )
+                      ],
+                    ),
+                    Image.asset(
+                      "assets/images/avatar.png",
+                      height: 40,
+                      width: 40,
+                    )
+                  ],
                 ),
-                child: const SizedBox(
-                  width: 300,
-                  height: 100,
-                  child: Center(child: Text('Outlined Card')),
+                const Padding(padding: EdgeInsets.all(10)),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: const <Widget>[
+                    Text(
+                      "Promotion",
+                      style: TextStyle(
+                          color: ColorPalette.darkColor,
+                          fontWeight: FontWeight.normal),
+                    ),
+                    Text(
+                      "more",
+                      style: TextStyle(
+                          color: ColorPalette.primaryColor,
+                          fontWeight: FontWeight.normal),
+                    )
+                  ],
                 ),
-              ),
-            ),
+                const Padding(padding: EdgeInsets.all(10)),
+                // hero
+                Card(
+                    elevation: 0,
+                    shape: RoundedRectangleBorder(
+                      side: BorderSide(
+                        color: Theme.of(context).colorScheme.outline,
+                      ),
+                      borderRadius: const BorderRadius.all(Radius.circular(12)),
+                    ),
+                    child: Row(
+                      children: [
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            const Text(
+                              "Get Free",
+                              style: TextStyle(
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.w400,
+                                  color: Colors.blueGrey),
+                            ),
+                            const Text(
+                              "Shipping",
+                              style: TextStyle(
+                                  fontSize: 36,
+                                  fontWeight: FontWeight.w600,
+                                  color: Colors.black12),
+                            ),
+                            const Text(
+                              "First Purchase",
+                              style: TextStyle(
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.w400,
+                                  color: Colors.blueGrey),
+                            ),
+                            ElevatedButton(
+                                onPressed: () => {},
+                                child: const Text(
+                                  "Shop Now",
+                                  style: TextStyle(
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.w400,
+                                      color: Colors.white),
+                                ))
+                          ],
+                        ),
+                        Expanded(
+                          child: Image.asset(
+                            "assets/images/pixel.png",
+                            // height: 300,
+                          ),
+                        )
+                      ],
+                    )),
 
-            // Item categorical list
-            ItemsSection(),
-          ],
-        )),
+                // Item categorical list
+                ItemsSection(),
+              ],
+            ),
+          ),
+        ),
       ),
     );
   }
