@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'categories_card.dart';
 
 class CategorySection extends StatelessWidget {
+  // TODO! Get a list of categories from future safely
   final List<ProductCategory> categories=fetchCategories().toList();
   CategorySection({Key? key}) : super(key: key);
   
@@ -22,7 +23,8 @@ class CategorySection extends StatelessWidget {
               if (kDebugMode) {
                 print("Category $categories[index].name ");
               }
-              const ProductList(items: [],);
+              //TODO! fetch products according to category name passed
+              ProductList(products: categoryProducts({categories[index].name}));
             },
           );
         }));

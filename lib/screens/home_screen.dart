@@ -1,7 +1,6 @@
 import 'package:electros/models/product.model.dart';
 import 'package:electros/services/http.service.dart';
 import 'package:electros/utils/app_theme.dart';
-import 'package:electros/widgets/items_section.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
@@ -160,7 +159,7 @@ class _HomePageState extends State<HomePage> {
                       ),
                     )),
 
-                // Item categories list
+                // Product categories list
                 CategorySection(),
               ],
             ),
