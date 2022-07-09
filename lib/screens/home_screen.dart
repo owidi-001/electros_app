@@ -160,7 +160,7 @@ class _HomePageState extends State<HomePage> {
                     )),
 
                 // Product categories list
-                CategorySection(),
+                // CategorySection(),
               ],
             ),
           ),

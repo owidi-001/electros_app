@@ -56,7 +56,8 @@ class _ProductDetailState extends State<ProductDetail> {
                   child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       // TODO! convert the math to string value
                       children: <Widget>[
-                        Text("\$${this.product.price * this.quantity}"),
+                        // Text("\$${this.product.price * this.quantity}"),
+                        Text("\$200"),
                         Card(
                           shape: const RoundedRectangleBorder(
                               side: BorderSide(
@@ -78,7 +79,8 @@ class _ProductDetailState extends State<ProductDetail> {
                                     )),
                                 // TODO! Correct this to read from quantity and update as required
                                 Text(
-                                  "$quantity",
+                                  // "$quantity",
+                                  "20",
                                   style: const TextStyle(
                                       fontSize: 20,
                                       fontWeight: FontWeight.bold,
