@@ -1,57 +1,49 @@
-import 'package:electros/constants.dart';
-import 'package:electros/screens/home.dart';
-import 'package:flutter/foundation.dart';
+import 'package:electros/utils/routes.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
-import 'dart:async';
-import 'dart:convert';
-import 'package:http/http.dart' as http;
+import 'screens/order/cart_screen.dart';
+import 'screens/product/product_detail_screen.dart';
+import 'screens/product/product_list_screen.dart';
+import 'screens/user/dashboard.dart';
+import 'screens/auth/launch_screen.dart';
+import 'screens/auth/registration_screen.dart';
+import 'screens/auth/splash_screen.dart';
+import 'screens/user/profile_screen.dart';
 
-import 'models/Product.dart';
 
 void main() {
-  runApp(MyApp(
-    products: fetchProducts(),
-  ));
-
-  if (kDebugMode) {
-    print("Test point 1");
-    print(fetchProducts());
-  }
-}
-
-List<Product> parseProducts(String responseBody) {
-  final parsed = json.decode(responseBody).cast<Map<String, dynamic>>();
-  return parsed.map<Product>((json) => Product.fromJson(json)).toList();
-}
-
-Future<List<Product>> fetchProducts() async {
-  final response = await http.get(Uri.parse("$baseUrl/products/"));
-
-  if (response.statusCode == 200) {
-    if (kDebugMode) {
-      print(response);
-    }
-    return parseProducts(response.body);
-  } else {
-    throw Exception('Unable to fetch products from the REST API');
-  }
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  final Future<List<Product>> products;
-  const MyApp({Key? key, required this.products}) : super(key: key);
+  const MyApp({Key? key}) : super(key: key);
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: MyHomePage(title: 'Products Page', products: products),
+      title: 'Electros',
+      initialRoute: "/",
+      routes: {
+        // launch and auth
+        "/": (context) => const SplashScreen(),
+        CustomRoutes.launchRoute: (context) => const LaunchScreen(),
+        CustomRoutes.registrationRoute: (context) => const RegistrationScreen(),
+
+        // dashboard
+        CustomRoutes.dashboardRoute: (context) => const DashboardScreen(),
+        CustomRoutes.productListRoute: (context) => const ProductListScreen(),
+        CustomRoutes.productDetailRoute: (context) => const ProductDetailScreen(),
+
+        // cart
+        CustomRoutes.cartRoute: (context) => const CartScreen(),
+        
+        // profile
+        CustomRoutes.profileRoute: (context) => const ProfileScreen(),
+      },
+      theme: ThemeData(fontFamily: GoogleFonts.lato().fontFamily),
+      
     );
   }
 }
