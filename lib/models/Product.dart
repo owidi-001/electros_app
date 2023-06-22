@@ -24,3 +24,19 @@ class Product {
     );
   }
 }
+
+class ProductCategory {
+  final String name;
+  final String image;
+  final int count;
+
+  ProductCategory(this.name, this.image, this.count);
+
+  factory ProductCategory.fromJson(Map<String, dynamic> data) {
+    return ProductCategory(
+      data['name'],
+      data['count'],
+      data['image'],
+    );
+  }
+}

@@ -1,7 +1,10 @@
 import 'package:electros/utils/theme.dart';
 import 'package:electros/widgets/bottom_navigation.dart';
+import 'package:electros/widgets/category_card.dart';
+import 'package:electros/widgets/category_list_view.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:electros/services/product.service.dart';
 
 class DashboardScreen extends StatefulWidget {
   const DashboardScreen({Key? key}) : super(key: key);
@@ -55,59 +58,69 @@ class _DashboardScreenState extends State<DashboardScreen> {
               ),
             ),
             SliverToBoxAdapter(
-              child: InkWell(
-                onTap: () => {},
+              child: SizedBox(
+                height: MediaQuery.of(context).size.height * 0.2,
                 child: Card(
-                  color: CustomTheme.deepColor,
-                  shadowColor: CustomTheme.primaryColor,
-                  elevation: 2,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(16.0),
-                  ),
-                  child: FractionallySizedBox(
-                    widthFactor: 0.8,
-                    heightFactor: 0.5,
-                    alignment: Alignment.center,
-                    child: Container(
-                      padding: const EdgeInsets.all(16),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: <Widget>[
-                          Column(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    color: CustomTheme.deepColor,
+                    shadowColor: CustomTheme.primaryColor,
+                    elevation: 2,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(16.0),
+                    ),
+                    child: Stack(
+                      children: <Widget>[
+                        // To overflow
+                        Positioned(
+                            top: 0,
+                            right: 0,
+                            height: 150,
+                            child:
+                                Image.asset("assets/images/mac-featured.png")),
+                        Padding(
+                          padding: const EdgeInsets.all(16.0),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             crossAxisAlignment: CrossAxisAlignment.start,
-                            children: <Widget>[
-                              const Text("data"),
+                            children: [
                               const Text(
-                                "Unbelievable Visual & Performance",
+                                "Macbook Pro M2",
                                 style: TextStyle(
-                                    fontSize: 18,
-                                    fontWeight: FontWeight.bold,
+                                    fontSize: 8,
+                                    fontWeight: FontWeight.normal,
                                     color: CustomTheme.whiteColor),
                               ),
-                              TextButton(
-                                onPressed: () => {},
-                                style: const ButtonStyle(
-                                  alignment: Alignment.bottomLeft,
-                                ),
-                                child: const Text(
-                                  "Buy Now",
-                                  style: TextStyle(
-                                      fontSize: 12, color: CustomTheme.lightColor),
-                                ),
-                              )
+                              const FractionallySizedBox(
+                                  widthFactor: 0.6,
+                                  child: Text(
+                                    "Unbelievable Visual & Performance",
+                                    style: TextStyle(
+                                        fontSize: 18,
+                                        fontWeight: FontWeight.bold,
+                                        color: CustomTheme.whiteColor),
+                                  )),
+                              ElevatedButton(
+                                  onPressed: () => {},
+                                  child: const Text(
+                                    "Buy Now",
+                                    style: TextStyle(
+                                        color: CustomTheme.whiteColor,
+                                        fontSize: 12,
+                                        fontWeight: FontWeight.normal),
+                                  ))
                             ],
                           ),
-                          Flexible(
-                              child: Image.asset("assets/images/macbook1.png")),
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
+                        ),
+                      ],
+                    )),
               ),
-            )
+            ),
+            const SliverToBoxAdapter(
+              child: SizedBox(height: 32),
+            ),
+            // Category list
+            SliverToBoxAdapter(
+              child: categoryCardListView(),
+            ),
           ]),
         ),
         bottomNavigationBar: const BottomAppNavigation());
